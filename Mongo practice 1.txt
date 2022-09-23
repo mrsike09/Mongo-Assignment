@@ -1,0 +1,122 @@
+> use onlineshopping
+switched to db onlineshopping
+> db.customer
+onlineshopping.customer
+> db.address
+onlineshopping.address
+> db.orders
+onlineshopping.orders
+> db.vendors
+onlineshopping.vendors
+> db.products
+onlineshopping.products
+> db.product.insertMany([{prod_name:"Laptop",prod_cat:"Electronis",prod_price:50000},{prod_name:"chair",prod_cat:"Furniture",prod_price:1000}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("632d636f9cedd0ed9584eaf6"),
+                ObjectId("632d636f9cedd0ed9584eaf7")
+        ]
+}
+> db.product.find({},{prod_name:1,prod_price:1,_id:0});
+{ "prod_name" : "Laptop", "prod_price" : 50000 }
+{ "prod_name" : "chair", "prod_price" : 1000 }
+>  db.orders.insertMany([{order_status:"delivered",order_amount:3000},{order_status:"unresolved",order_amount:200},{order_status:"unresolved",order_amount:3000}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("632d640e9cedd0ed9584eaf8"),
+                ObjectId("632d640e9cedd0ed9584eaf9"),
+                ObjectId("632d640e9cedd0ed9584eafa")
+        ]
+}
+> db.orders.find({order_status:"unresolved"}).pretty();
+{
+        "_id" : ObjectId("632d640e9cedd0ed9584eaf9"),
+        "order_status" : "unresolved",
+        "order_amount" : 200
+}
+{
+        "_id" : ObjectId("632d640e9cedd0ed9584eafa"),
+        "order_status" : "unresolved",
+        "order_amount" : 3000
+
+ db.address.insertMany([{cus_city:"Delhi",cus_pin:600012,cus_address:"kalmarg road"},{cus_city:"Delhi",cus_pin:600012,cus_address:"parliment road"},{cus_city:"Jaipur",cus_pin:111111,cus_address:"palace road"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("632d646c9cedd0ed9584eafb"),
+                ObjectId("632d646c9cedd0ed9584eafc"),
+                ObjectId("632d646c9cedd0ed9584eafd")
+        ]
+}
+> db.address.find({cus_pin:600012}).pretty();
+{
+        "_id" : ObjectId("632d646c9cedd0ed9584eafb"),
+        "cus_city" : "Delhi",
+        "cus_pin" : 600012,
+        "cus_address" : "kalmarg road"
+}
+{
+        "_id" : ObjectId("632d646c9cedd0ed9584eafc"),
+        "cus_city" : "Delhi",
+        "cus_pin" : 600012,
+        "cus_address" : "parliment road"
+
+
+db.customer.insertMany([{cus_name:"raghav",cus_email:"raghav@gmail.com",cus_mob:"9999999",cus_city:"Delhi"},{cus_name:"lawrence",cus_email:"lawrence@gmail.com",cus_mob:"8888888",cus_city:"Jaipur"},{cus_name:"Kanchana",cus_email:"shiv@gmail.com",cus_mob:"77777777",cus_city:"Delhi"}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("632d65a79cedd0ed9584eafe"),
+                ObjectId("632d65a79cedd0ed9584eaff"),
+                ObjectId("632d65a79cedd0ed9584eb00")
+        ]
+}
+> db.customer.find({cus_city:"Delhi"}).pretty();
+{
+        "_id" : ObjectId("632d65a79cedd0ed9584eafe"),
+        "cus_name" : "raghav",
+        "cus_email" : "raghav@gmail.com",
+        "cus_mob" : "9999999",
+        "cus_city" : "Delhi"
+}
+{
+        "_id" : ObjectId("632d65a79cedd0ed9584eb00"),
+        "cus_name" : "Kanchana",
+        "cus_email" : "shiv@gmail.com",
+        "cus_mob" : "77777777",
+        "cus_city" : "Delhi"
+db.vendor.insertMany([{v_name:"Baburao",v_email:"baburao@gmail.com",v_mob:"666666",v_wallet:"paytm"},{v_name:"Raju",v_email:"raju@gmail.com",v_mob:"6999999",v_wallet:"phonepay"},{v_name:"Mastani",v_email:"mastani@gmail.com",v_mob:"7888888",v_wallet:"googlepay"}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("632d66379cedd0ed9584eb01"),
+                ObjectId("632d66379cedd0ed9584eb02"),
+                ObjectId("632d66379cedd0ed9584eb03")
+        ]
+}
+
+
+db.vendor.find().pretty();
+{
+        "_id" : ObjectId("632d66379cedd0ed9584eb01"),
+        "v_name" : "Baburao",
+        "v_email" : "baburao@gmail.com",
+        "v_mob" : "666666",
+        "v_wallet" : "paytm"
+}
+{
+        "_id" : ObjectId("632d66379cedd0ed9584eb02"),
+        "v_name" : "Raju",
+        "v_email" : "raju@gmail.com",
+        "v_mob" : "6999999",
+        "v_wallet" : "phonepay"
+}
+{
+        "_id" : ObjectId("632d66379cedd0ed9584eb03"),
+        "v_name" : "Mastani",
+        "v_email" : "mastani@gmail.com",
+        "v_mob" : "7888888",
+        "v_wallet" : "googlepay"
+}
